@@ -3,6 +3,10 @@
 // Desafio Batalha Naval - MateCheck
 // Nível Novato - Posicionamento dos Navios
 
+
+#define LINHAS 3                                  //DEFININDO AS CONSTANTES QUE SERAO UTILIZADAS 
+#define COLUNAS 3                                 //AO LONGO DO CÓDIGO
+
 void mostrarTabuleiro(int tabuleiro[10][10]) {       //FUNÇÃO QUE SERÁ UTILIZADA PARA EXIBIR O TABULEIRO
 
      printf("  A B C D E F G H I J\n");             //MOSTRANDO O A LINHA SUPERIOR DO TABULEIRO
@@ -25,16 +29,34 @@ int main() {
 
     //INSERIR O BARCO NA HORIZONTAL
     
-    for (int i = 0; i < 3; i++) {       //DECLAREI i=0, A CONDIÇÃO PARA O LOOP, E O INCREMENTO.
+    for (int i = 0; i < LINHAS; i++) {       //DECLAREI i=0, A CONDIÇÃO PARA O LOOP, E O INCREMENTO.
         tabuleiro[2][1 + i] = 3;        //NO TABULEIRO, NA LINHA 2, COLUNA B INSERIR O VALOR 3,
     }                                   //NAS PROXIMAS DUAS EXECUÇÕES ADICIONA 1 NO INDICE DA COLUNA.
 
     
     //INSERIR O BARCO NA VERTICAL
     
-    for (int i = 0; i < 3; i++) {       //DECLAREI i=0, A CONDIÇÃO PARA O LOOP, E O INCREMENTO.
-        tabuleiro[5 + i][3] = 3;        //NO TABULEIRO, NA LINHA 5, COLUNA D INSERIR O VALOR 3,
-    }                                   //NAS PROXIMAS DUAS EXECUÇÕES ADICIONA 1 NO INDICE DA LINHA.
+    for (int i = 0; i < COLUNAS; i++) {       //DECLAREI i=0, A CONDIÇÃO PARA O LOOP, E O INCREMENTO.
+        tabuleiro[5 + i][3] = 3;              //NO TABULEIRO, NA LINHA 5, COLUNA D INSERIR O VALOR 3,
+    }                                         //NAS PROXIMAS DUAS EXECUÇÕES ADICIONA 1 NO INDICE DA LINHA.
+
+    
+    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
+    //INSERIR OS BARCOS NA DIAGONAL
+
+    for (int i = 0; i < 1; i++)               //LOOP PARA INSERIR O BARCO NA DIAGONAL A PARTIR DA
+    {                                         //LINHA DE INDICE 4 E COLUNA DE INDICE 5
+        tabuleiro[4 + i][5] = 3;
+        tabuleiro[5 + i][6] = 3;
+        tabuleiro[6 + i][7] = 3;
+    }
+    
+    for (int i = 0; i < 1; i++)               //LOOP PARA INSERIR O BARCO NA DIAGONAL A PARTIR DA
+    {                                         //LINHA DE INDICE 0 E COLUNA DE INDICE 9
+        tabuleiro[0][9 - i] = 3;
+        tabuleiro[1][8 - i] = 3;
+        tabuleiro[2][7 - i] = 3;
+    }
 
 
     mostrarTabuleiro(tabuleiro);
@@ -42,10 +64,6 @@ int main() {
     return 0;
 }
 
-// Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
