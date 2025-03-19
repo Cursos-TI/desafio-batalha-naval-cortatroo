@@ -6,6 +6,7 @@
 
 #define LINHAS 3                                  //DEFININDO AS CONSTANTES QUE SERAO UTILIZADAS 
 #define COLUNAS 3                                 //AO LONGO DO CÓDIGO
+#define CONTEUDO 7
 
 void mostrarTabuleiro(int tabuleiro[10][10]) {       //FUNÇÃO QUE SERÁ UTILIZADA PARA EXIBIR O TABULEIRO
 
@@ -21,11 +22,25 @@ void mostrarTabuleiro(int tabuleiro[10][10]) {       //FUNÇÃO QUE SERÁ UTILIZ
      }
  }
 
+void mostrarPoderes(int tabuleiroPoder[10][10]) {       //FUNÇÃO QUE SERÁ UTILIZADA PARA EXIBIR O TABULEIRO
+
+     printf("  A B C D E F G H I J\n");             //MOSTRANDO O A LINHA SUPERIOR DO TABULEIRO
+    
+     for (int i = 0; i < 10; i++) {                 //LOOP PARA PRINT O VALOR DE CADA LINHA/COLUNA
+         printf("%d ", 0 + i);  
+         
+         for (int j = 0; j < 10; j++) {             //LOOP INTERNO, PEGANDO OS VALORES DOS INDICES DE i E j.
+                 printf("%d ", tabuleiroPoder[i][j]);
+         }
+         printf("\n");
+     }
+ }
+
 
 int main() {
 
     int tabuleiro[10][10] = {0};        //DECLARANDO A VARIAVEL TABULEIRO/MATRIZ 10X10 COM VALOR 0
-
+    int tabuleiroPoder[10][10] = {0};   //DECLARANDO A VARIAVEL TABULEIRO/MATRIZ 10X10 COM VALOR 0 PARA APRESENTAR OS PODERES
 
     //INSERIR O BARCO NA HORIZONTAL
     
@@ -58,30 +73,59 @@ int main() {
         tabuleiro[2][7 - i] = 3;
     }
 
+    printf("**** NAVIOS DISPOSTOS NO TABULEIRO ****\n");
+    printf("\n");
 
     mostrarTabuleiro(tabuleiro);
+    printf("\n");
 
+
+    //NIVEL MESTRE
+    
+    printf("******* PODERES NO TABULEIRO ***********\n");
+    printf("\n");
+
+    //INSERIR O PODER DE CONE
+    
+    for (int i = 0; i < 1; i++)
+    {       
+        tabuleiroPoder[0][3 + i] = CONTEUDO;   
+        tabuleiroPoder[1][2 - i] = CONTEUDO;   
+        tabuleiroPoder[1][3] = CONTEUDO;
+        tabuleiroPoder[1][4 + i] = CONTEUDO;
+        tabuleiroPoder[2][1 - i] = CONTEUDO;
+        tabuleiroPoder[2][2 - i] = CONTEUDO;
+        tabuleiroPoder[2][3] = CONTEUDO;
+        tabuleiroPoder[2][4 + i] = CONTEUDO;
+        tabuleiroPoder[2][5 + i] = CONTEUDO;
+    }                                   
+
+    //INSERIR O PODER DE CRUZ
+    
+    for (int i = 0; i < 1; i++)
+    {       
+        tabuleiroPoder[7][3 + i] = CONTEUDO;
+        tabuleiroPoder[8][1 - i] = CONTEUDO;
+        tabuleiroPoder[8][2 - i] = CONTEUDO;
+        tabuleiroPoder[8][3] = CONTEUDO;
+        tabuleiroPoder[8][4 + i] = CONTEUDO;
+        tabuleiroPoder[8][5 + i] = CONTEUDO;
+        tabuleiroPoder[9][3 + i] = CONTEUDO;
+    }                                         
+
+    //INSERIR O PODER OCTAEDRO
+
+    for (int i = 0; i < 1; i++)               
+    {                                         
+        tabuleiroPoder[4][7 + i] = CONTEUDO;
+        tabuleiroPoder[5][6 + i] = CONTEUDO;
+        tabuleiroPoder[5][7] = CONTEUDO;
+        tabuleiroPoder[5][8 + i] = CONTEUDO;
+        tabuleiroPoder[6][7] = CONTEUDO;
+    }
+   
+    
+    mostrarPoderes(tabuleiroPoder);
+  
     return 0;
 }
-
-
-    // Nível Mestre - Habilidades Especiais com Matrizes
-    // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
-
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
-
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
